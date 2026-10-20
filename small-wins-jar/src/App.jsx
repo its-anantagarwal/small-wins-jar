@@ -1,15 +1,32 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import './App.css'
 
 function App(){
-  const[stars, setStars]=useState(0)
+  const[wins,setWins]=useState(()=>{
+    const savedWins = localStorage.getItem('small-wins')
+    if(!savedWins) return[]
+
+    return JSON.parse(savedWins).map((item, index)=>typeof item==="string"?{id:Date.now()+index,text:item}:item)
+  })
+
+
   const[win,setWin]=useState('')
+
+  useEffect(()=>{
+    localStorage.setItem('small-wins',JSON.stringify(wins))
+  },[wins])
 
   function addWin(event){
     event.preventDefault()
     if (win.trim()==='') return
 
-    setStars(currentStars=>currentStars+1)
+    setWins(currentWins=>[
+      ...currentWins,
+      {
+        id:Date.now(),
+        text:win.trim()
+      }
+    ])
     setWin('')
   }
   return(
@@ -19,13 +36,13 @@ function App(){
       <p className = "subtitle">Every little win needs to be celebrated</p>
 
       <section className = "jar-card">
-        <div className = "jar" aria-label={`${stars} wins collected`}>
-          {Array.from({length:stars},(_,index)=>(
-            <span className= "star" key = {index} style = {{'--index':index}}>⭐</span>
+        <div className = "jar" aria-label={`${wins.length} wins collected`}>
+          {wins.map((item,index)=>(
+            <span className="star" key="{item.id}" style={{ '--index': index }} title={item.text}>⭐</span>
           ))}
         </div>
 
-        <p className="star-count">{stars}{stars===1 ?'little win':'little wins'} collected</p>
+        <p className="star-count">{wins.length}{wins.length===1 ?'little win':'little wins'} collected</p>
       </section>
 
       <form onSubmit = {addWin} className = "win-form">
