@@ -1,0 +1,138 @@
+.app{
+  width:90%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding:50px 0 30px;
+  text-align:center;
+}
+.eyebrow{
+  color:mediumpurple;
+  font-size:0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+h1{
+  margin:10px 0;
+  font-size:clamp(2rem,8vw,3.1rem);
+  line-height:1.15;
+
+}
+
+.subtitle{
+  margin:12px 0 30px;
+  color:lightslategray;
+}
+
+.jar-card{
+  padding:24px;
+  border:1px solid antiquewhite;
+  border-radius:28px;
+  background:white;
+  box-shadow: 0 2px 8px lightgrey;
+}
+
+.jar{
+  display:flex;
+  flex-wrap:wrap-reverse;
+  align-content:flex-end;
+  justify-content: center;
+  gap:5px;
+  width: 200px;
+  height: 230px;
+  margin: 0 auto;
+  padding:12px;
+  overflow:hidden;
+  border: 2px solid lightblue;
+  border-radius:20px;
+}
+
+.star{
+  color:gold;
+  font-size:26px;
+  line-height: 1;
+  animation:popin 300ms ease-out both;
+  animation-delay:calc(var(--index)*15ms)
+}
+
+.star-count{
+  margin:20px 0 0;
+  font-weight: 800;
+}
+
+.win-form{
+  display:grid;
+  gap:12px;
+  margin-top:24px;
+  text-align:left;
+}
+
+.win-form label{
+  font-size:0.9rem;
+  font-weight:800;
+}
+.win-form input{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid thistle;
+  border-radius: 15px;
+  background-color: white;
+  color:inherit;
+}
+
+.win-form button{
+  padding:14px 18px;
+  border:0;
+  border-radius: 15px;
+  background:mediumpurple;
+  color:white;
+  font-weight:800;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.win-form button:hover{
+  background:rebeccapurple;
+  transform:translateY(-2px)
+  
+}
+
+
+.footer-note{
+  margin-top: 28px;
+  color:slategrey;
+  font-size: 0.85rem;
+}
+
+@keyframes popin{
+  from{
+    opacity:0;
+    transform:scale(0.3) rotate(-35deg);
+  }
+
+  to{
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+
+@media(max-width:400px){
+  .app{
+    padding-top:30px;
+  }
+
+  .jar-card{
+    padding:20px 12px;
+  }
+}
+
+
+
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

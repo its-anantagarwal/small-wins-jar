@@ -1,0 +1,38 @@
+:root{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color:brown;
+  background:floralwhite;
+  font-synthesis:none;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  font-weight:400;
+}
+
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-width: 320px;
+  min-height: 100vh;
+
+}
+
+button,
+input{
+  font:inherit;
+}
+button{
+  cursor: pointer;
+}
+button:focus-visible,
+input:focus-visible{
+  outline:3px solid black;
+  outline-offset:3px;
+}
+
+#root{
+  min-height:100vh;
+}
